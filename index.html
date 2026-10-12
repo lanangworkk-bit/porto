@@ -182,11 +182,27 @@
     </div>
 
     <header class="max-w-5xl mx-auto px-6">
-      <nav class="flex items-center justify-between py-6" aria-label="Main">
-        <a href="/" class="font-display font-semibold text-lg"
-          >I Ketut Lanang Subakti.</a
-        >
-        <ul class="flex gap-6 text-sm">
+      <nav
+        class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 py-6"
+        aria-label="Main"
+      >
+        <!-- Baris 1: Nama + Toggle -->
+        <div class="flex items-center justify-between">
+          <a href="/" class="font-display font-semibold text-lg">
+            I Ketut Lanang Subakti.
+          </a>
+          <button
+            id="theme-toggle"
+            class="sm:hidden text-sm px-3 py-1.5 border border-zinc-200 dark:border-zinc-700 rounded-full hover:border-zinc-950 dark:hover:border-zinc-50 transition-colors"
+            aria-label="Toggle dark mode"
+          >
+            <span class="dark:hidden">🌙</span>
+            <span class="hidden dark:inline">☀️</span>
+          </button>
+        </div>
+
+        <!-- Baris 2: Menu -->
+        <ul class="flex flex-wrap gap-x-5 gap-y-2 text-sm sm:gap-6">
           <li>
             <a href="#about" class="hover:text-highlight transition-colors"
               >About</a
@@ -197,7 +213,6 @@
               >Contact</a
             >
           </li>
-
           <li>
             <a href="#pendidikan" class="hover:text-highlight transition-colors"
               >Pendidikan</a
@@ -209,9 +224,11 @@
             >
           </li>
         </ul>
+
+        <!-- Toggle untuk desktop -->
         <button
-          id="theme-toggle"
-          class="text-sm px-3 py-1.5 border border-zinc-200 dark:border-zinc-700 rounded-full hover:border-zinc-950 dark:hover:border-zinc-50 transition-colors"
+          id="theme-toggle-desktop"
+          class="hidden sm:inline-block text-sm px-3 py-1.5 border border-zinc-200 dark:border-zinc-700 rounded-full hover:border-zinc-950 dark:hover:border-zinc-50 transition-colors"
           aria-label="Toggle dark mode"
         >
           <span class="dark:hidden">🌙</span>
@@ -222,7 +239,7 @@
 
     <main class="max-w-5xl mx-auto px-6">
       <section class="py-20 md:py-32" aria-labelledby="hero-heading">
-        <p class="text-sm text-zinc-500 dark:text-zinc-400 mb-4">
+        <p class="text-sm:text-7xl text-zinc-500 dark:text-zinc-400 mb-4">
           Hello, it's me <span class="text-highlight">✦</span> I Ketut Lanang
           Subakti
         </p>
@@ -242,7 +259,7 @@
           that are simple to use.
         </p>
 
-        <div class="mt-8 flex gap-3">
+        <div class="mt-8 grid grid-cols-2:flex-wrap gap-3">
           <a
             href="https://github.com/lanangworkk-bit"
             target="_blank"
