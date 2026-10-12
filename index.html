@@ -40,51 +40,133 @@
         border-color: #3f3f46;
       }
 
-      /* Glow hijau lembut di background */
-      body::before,
-      body::after {
-        content: "";
+      /* Lapisan dekorasi background */
+      .bg-decor {
         position: fixed;
+        inset: 0;
         z-index: -1;
-        border-radius: 50%;
-        filter: blur(120px);
         pointer-events: none;
+        overflow: hidden;
       }
-      body::before {
-        width: 600px;
-        height: 600px;
-        top: -150px;
-        right: -100px;
+      .bg-decor .blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(100px);
+      }
+      .bg-decor .blob-1 {
+        width: 700px;
+        height: 700px;
+        top: -200px;
+        right: -150px;
         background: radial-gradient(
           circle,
-          rgba(48, 175, 91, 0.15),
+          rgba(48, 175, 91, 0.18),
           transparent 70%
         );
+        animation: float1 18s ease-in-out infinite;
       }
-      body::after {
+      .bg-decor .blob-2 {
         width: 500px;
         height: 500px;
-        bottom: -100px;
-        left: -150px;
+        bottom: -120px;
+        left: -120px;
         background: radial-gradient(
           circle,
-          rgba(48, 175, 91, 0.1),
+          rgba(48, 175, 91, 0.12),
+          transparent 70%
+        );
+        animation: float2 22s ease-in-out infinite;
+      }
+      .bg-decor .blob-3 {
+        width: 350px;
+        height: 350px;
+        top: 45%;
+        left: 35%;
+        background: radial-gradient(
+          circle,
+          rgba(48, 175, 91, 0.07),
+          transparent 70%
+        );
+        animation: float3 26s ease-in-out infinite;
+      }
+      .dark .bg-decor .blob-1 {
+        background: radial-gradient(
+          circle,
+          rgba(181, 255, 109, 0.09),
           transparent 70%
         );
       }
-      .dark body::before {
+      .dark .bg-decor .blob-2 {
         background: radial-gradient(
           circle,
-          rgba(181, 255, 109, 0.08),
+          rgba(181, 255, 109, 0.07),
           transparent 70%
         );
       }
-      .dark body::after {
+      .dark .bg-decor .blob-3 {
         background: radial-gradient(
           circle,
-          rgba(181, 255, 109, 0.06),
+          rgba(181, 255, 109, 0.05),
           transparent 70%
         );
+      }
+
+      /* Titik-titik halus sebagai tekstur */
+      .bg-decor .dots {
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(
+          rgba(48, 175, 91, 0.13) 1px,
+          transparent 1px
+        );
+        background-size: 24px 24px;
+        mask-image: radial-gradient(
+          ellipse 60% 50% at 50% 0%,
+          black,
+          transparent
+        );
+        -webkit-mask-image: radial-gradient(
+          ellipse 60% 50% at 50% 0%,
+          black,
+          transparent
+        );
+      }
+      .dark .bg-decor .dots {
+        background-image: radial-gradient(
+          rgba(181, 255, 109, 0.1) 1px,
+          transparent 1px
+        );
+      }
+
+      @keyframes float1 {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        50% {
+          transform: translate(-40px, 30px) scale(1.05);
+        }
+      }
+      @keyframes float2 {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        50% {
+          transform: translate(30px, -25px) scale(1.08);
+        }
+      }
+      @keyframes float3 {
+        0%,
+        100% {
+          transform: translate(0, 0);
+        }
+        33% {
+          transform: translate(25px, -20px);
+        }
+        66% {
+          transform: translate(-20px, 15px);
+        }
       }
     </style>
   </head>
@@ -92,6 +174,13 @@
   <body
     class="bg-white dark:bg-zinc-950 text-zinc-950 dark:text-zinc-50 font-body antialiased"
   >
+    <div class="bg-decor" aria-hidden="true">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+      <div class="dots"></div>
+    </div>
+
     <header class="max-w-5xl mx-auto px-6">
       <nav class="flex items-center justify-between py-6" aria-label="Main">
         <a href="/" class="font-display font-semibold text-lg"
